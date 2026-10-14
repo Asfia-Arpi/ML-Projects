@@ -1,0 +1,116 @@
+# Holiday Package Purchase Prediction
+
+## Project Overview
+
+This project uses Machine Learning to predict whether a customer is likely to purchase a holiday package based on customer demographics, travel preferences, and interaction history.
+
+The goal is to help travel companies identify potential customers more effectively, improve targeted marketing campaigns, and reduce unnecessary marketing expenditure.
+
+The project uses the **Trips & Travel.Com customer dataset** and a Random Forest Classifier to predict package purchase behavior.
+
+## Problem Statement
+
+The company previously contacted customers randomly to promote holiday packages, resulting in high marketing costs and a low purchase conversion rate.
+
+This project aims to use historical customer data to identify potential buyers and support more data-driven marketing decisions. The approach could also be adapted to help target a new Wellness Tourism Package.
+
+## Dataset
+
+- **Dataset:** Travel.csv
+- **Total records:** 4,888
+- **Total columns:** 20
+- **Target variable:** `ProdTaken`
+- `ProdTaken = 1`: Customer purchased a package.
+- `ProdTaken = 0`: Customer did not purchase a package.
+
+The dataset includes customer age, occupation, income, city tier, travel history, passport ownership, package preferences, and other customer-related attributes.
+
+## Technologies Used
+
+- Python
+- Google Colab
+- Pandas
+- NumPy
+- Matplotlib
+- Scikit-learn
+- Random Forest Classifier
+
+## Project Workflow
+
+1. Load the customer dataset using Pandas.
+2. Explore the dataset and inspect missing values.
+3. Handle missing numerical values using mean imputation.
+4. Handle missing categorical values using mode imputation.
+5. Encode categorical variables using Label Encoding.
+6. Split the dataset into 80% training data and 20% testing data.
+7. Apply feature scaling using StandardScaler.
+8. Train a Random Forest Classifier with 100 estimators.
+9. Evaluate the model using accuracy, precision, recall, F1-score, and a confusion matrix.
+10. Generate a purchase prediction and probability estimate for a new customer.
+
+## Model Performance
+
+The Random Forest Classifier achieved the following results on the test dataset:
+
+| Metric | Result |
+|---|---:|
+| Accuracy | 91.82% |
+| Precision — Non-buyers (Class 0) | 0.91 |
+| Recall — Non-buyers (Class 0) | 0.99 |
+| F1-score — Non-buyers (Class 0) | 0.95 |
+| Precision — Buyers (Class 1) | 0.94 |
+| Recall — Buyers (Class 1) | 0.62 |
+| F1-score — Buyers (Class 1) | 0.75 |
+
+**Key observation:** Although the model achieved 91.82% accuracy, its recall for actual buyers was 62%. This indicates an opportunity to improve the identification of potential customers.
+
+## Confusion Matrix
+
+| | Predicted: Not Purchased | Predicted: Purchased |
+|---|---:|---:|
+| Actual: Not Purchased | 780 | 7 |
+| Actual: Purchased | 73 | 118 |
+
+The model correctly identified 118 actual buyers while missing 73 actual buyers in the test dataset.
+
+## Sample Prediction
+
+The notebook includes an example prediction for a new customer:
+
+- **Predicted outcome:** Likely to purchase a package
+- **Estimated purchase probability:** 84%
+
+This probability is a model-generated estimate, not a guarantee of customer behavior.
+
+## Future Improvements
+
+- Compare Random Forest with Logistic Regression, Decision Trees, and Gradient Boosting models.
+- Improve buyer recall through class weighting and probability threshold tuning.
+- Evaluate performance using Precision-Recall AUC and other class-sensitive metrics.
+- Optimize marketing decisions by considering customer conversion rates and campaign costs.
+- Improve the preprocessing pipeline and validate probability calibration.
+
+## How to Run
+
+1. Open the project notebook in Google Colab.
+2. Upload `Travel.csv` to Google Drive or update the dataset path.
+3. Update the file path in the notebook to match your environment.
+4. Run the notebook cells in order.
+5. Review the evaluation metrics and sample prediction.
+
+## Repository Structure
+
+```text
+holiday-package-prediction/
+├── Holiday_Package_Prediction.ipynb
+├── README.md
+└── requirements.txt
+```
+
+## Conclusion
+
+This project demonstrates how supervised machine learning can support customer purchase prediction in the travel industry. The Random Forest model achieved 91.82% test accuracy and showed strong performance in identifying non-buyers. Further improvements in buyer recall could make the model more useful for targeted marketing and customer acquisition strategies.
+
+---
+
+**Project Type:** Machine Learning | Classification | Predictive Analytics
